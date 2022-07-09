@@ -15,9 +15,14 @@ time_s = df["time/s"].to_numpy().astype(float)
 force_n = df["force/N"].to_numpy().astype(float)
 
 #Testing the 
-ind = df["Z/m"].to_numpy().astype(float)*1000<0.1
+ind = df["Z/m"].to_numpy().astype(float)*1000
 
-print(df[ind])
+tresh = 0.1
+min_tresh = tresh*0.999
+max_tresh = tresh*1.001
+
+print(z_mm[(ind>min_tresh) & (ind<max_tresh)])
+print(force_n[(ind>min_tresh) & (ind<max_tresh)])
 
 plt.figure(1)
 plt.plot(z_mm)
