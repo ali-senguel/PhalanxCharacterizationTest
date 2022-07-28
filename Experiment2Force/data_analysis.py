@@ -10,7 +10,7 @@ from tabulate import tabulate
 
 def fn():       # 1.Get file names from directory
     directory = os.getcwdb()
-    file_list=os.listdir(r"/home/ali/Documents/Projects/PhalanxCharacterizationTest/Experiment2Force/forcemeasure20220718/e1sec1b_2")
+    file_list=os.listdir(r"/home/ali/Documents/Projects/PhalanxCharacterizationTest/Experiment2Force/forcemeasure20220721/sec1b_2")
     return file_list
 
 files = fn()
@@ -26,7 +26,7 @@ sorted_time = time.sort_values(ascending=True)
 #print(sorted_time)
 
 #df = pd.read_csv("E1_1to100mNw10umps", sep = "\t")
-df = pd.read_csv("forcemeasure20220718/e1sec1b_2force.txt",sep="\t")
+df = pd.read_csv("forcemeasure20220721/sec1b_2force.txt",sep="\t")
 
 distance = df.iloc[:,0]
 force = df.iloc[:,1]*1000
