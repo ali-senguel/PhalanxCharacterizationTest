@@ -20,7 +20,7 @@ def create_table(pos_x,pos_y):
     tss_tx = 0
     tss_ty = 0
     force_max = 0.2
-    force_inc = 0.005
+    force_inc = 0.001
     target_F = np.arange(0, force_max+force_inc, force_inc, dtype=float)
     target_F [0] = 0.0000001
 
@@ -43,24 +43,25 @@ def create_table(pos_x,pos_y):
     #print(data)
     return data
 
-num_points = 5
-d = np.arange(1, (num_points+1), 1, dtype=int) / 1000
-angles_deg = np.arange(0, 360, 9 )
-angles_rad = angles_deg * np.pi/180
+num_points = 50
+d = np.arange(1, (num_points+1), 1, dtype=int) / 50000
+#angles_deg = np.arange(0, 360, 9 )
+#angles_rad = angles_deg * np.pi/180
 
-sinY = np.sin(angles_rad)
-cosX = np.cos(angles_rad)
+#sinY = np.sin(angles_rad)
+#cosX = np.cos(angles_rad)
 
 
 all_data = pd.DataFrame()
 data = pd.DataFrame()
 for i in range(num_points):
     #print(f'd[i]{d[i]}\n')
-    x = d[i] * cosX
-    y = d[i] * sinY
-    for j in range(len(x)):
-        data = create_table(x[j],y[j])
-        all_data = pd.concat([all_data, data],ignore_index=True)
+    #x = d[i] * cosX
+    #y = d[i] * sinY
+    x = d[i]
+    y= 0
+    data = create_table(x,y)
+    all_data = pd.concat([all_data, data],ignore_index=True)
 
 #print(tabulate(all_data, headers = 'keys', tablefmt = 'psql'))
 all_data.to_csv('CharacterizationTest.txt', header=None, index=None, sep='\t')
